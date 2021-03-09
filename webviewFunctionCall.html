@@ -49,7 +49,11 @@ function executeAppOrGoStore() {
 }
 
 function webViewFunctionCall() {
-	window.Android.openUrlInBrowser('http://www.sggolf.com');
+	if (os == "iOS") {
+		document.location = "openUrlInBrowser?linkUrl=http://www.sggolf.com";
+	} else {
+		window.Android.openUrlInBrowser('http://www.sggolf.com');
+	}
 }
 
 </script>
