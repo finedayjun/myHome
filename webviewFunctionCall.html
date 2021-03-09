@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name=”viewport” content=”initial-scale = 2.0″>
+<style type="text/css">
+ <!--
+  body {
+  	font-size:20pt;
+  	margin: 10px;
+  	}
+ //-->
+ </style>
+<title>Execute App at (Mobile)WebPage</title>
+<script>
+var os = "";
+
+if (userAgent.search("android") > -1) {
+	os = "android";
+} else if (userAgent.search("iPhone") > -1 || userAgent.search("ipod") > -1 || userAgent.search("iPad") > -1) {
+	os = "iOS";
+} else {
+	os = "etc";
+}
+
+function goAppStoreOrPlayStore() {
+	var storeURL ="";
+	if (os == "iOS") {
+		storeURL = "https://itunes.apple.com/kr/app/sggolpeu/id1027273050?mt=8";
+	} else {
+		storeURL = "https://play.google.com/store/apps/details?id=com.sg.golf";
+	}
+	location.replace(storeURL);
+}
+
+
+function executeApp() {
+	var appUriScheme = "sggolf://query?t=boast&s=106636&i=664";
+	document.location.href = appUriScheme;
+}
+
+function executeAppOrGoStore() {
+	var openAt = new Date;
+	 setTimeout(
+	 	function() {
+	 		if (new Date - openAt < 1000)
+	 			goAppStoreOrPlayStore();
+	 	}, 500);
+	 executeApp();
+}
+
+function webViewFunctionCall() {
+	window.Android.openUrlInBrowser('http://www.sggolf.com');
+}
+
+</script>
+</head>
+<center>
+<a href="#" onclick="javascript:goAppStoreOrPlayStore()">스토어 열기</a><br /><br />
+<a href="#" onclick="javascript:executeApp()">앱 실행</a> <br /><br />
+<a href="#" onclick="javascript:executeAppOrGoStore()">있으면 실행하고 없으면 스토어로 가자</a>
+<a href="#" onclick="javascript:webViewFunctionCall()">웹뷰 함수 실행</a>
+
+</center>
+<body>
+</body>
+</html>
