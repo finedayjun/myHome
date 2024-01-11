@@ -14,6 +14,20 @@
 <script>
 var os = "";
 
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i) == null ? false : true;
+    },
+    iOS: function() {
+        return ((navigator.userAgent.match(/iPhone|iPad|iPod/i) == null) && (navigator.maxTouchPoints == 0)) ? false : true;
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.iOS());
+    }
+    //Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36
+};
+
+	
 if (userAgent.search("android") > -1) {
 	os = "android";
 } else if (userAgent.search("iPhone") > -1 || userAgent.search("ipod") > -1 || userAgent.search("iPad") > -1 || userAgent.search("Mac") > -1) {
@@ -24,13 +38,14 @@ if (userAgent.search("android") > -1) {
 
 function goAppStoreOrPlayStore() {
 	var storeURL ="";
-	if (os == "iOS") {
+	if (isMobile.iOS()) {
 		storeURL = "https://itunes.apple.com/kr/app/sggolpeu/id1027273050?mt=8";
-	} else if(os == "android") {
+	} else if(isMobile.Android()) {
 		storeURL = "https://play.google.com/store/apps/details?id=com.sg.golf";
 	}
 	
 	location.replace(storeURL);
+		
 }
 
 
