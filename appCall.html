@@ -16,7 +16,7 @@ var os = "";
 
 if (userAgent.search("android") > -1) {
 	os = "android";
-} else if (userAgent.search("iPhone") > -1 || userAgent.search("ipod") > -1 || userAgent.search("iPad") > -1) {
+} else if (userAgent.search("iPhone") > -1 || userAgent.search("ipod") > -1 || userAgent.search("iPad") > -1 || userAgent.search("Mac") > -1) {
 	os = "iOS";
 } else {
 	os = "etc";
@@ -26,9 +26,10 @@ function goAppStoreOrPlayStore() {
 	var storeURL ="";
 	if (os == "iOS") {
 		storeURL = "https://itunes.apple.com/kr/app/sggolpeu/id1027273050?mt=8";
-	} else {
+	} else if(os == "android") {
 		storeURL = "https://play.google.com/store/apps/details?id=com.sg.golf";
 	}
+	
 	location.replace(storeURL);
 }
 
