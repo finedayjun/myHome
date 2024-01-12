@@ -34,6 +34,8 @@
             var appUriScheme = "sggolf://query?typeCode=HIO_INVEN";
             document.location.href = appUriScheme;
 
+            var homeURL = "https://sggolf.com/main";
+            location.replace(homeURL);
         }
         
         function executeAppOrGoStore() {
@@ -45,6 +47,8 @@
                 }, 500);
             executeApp();
         }
+
+        executeAppOrGoStore();
         </script>
 
     <title>SG Golf</title>
