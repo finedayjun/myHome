@@ -4,16 +4,15 @@
         <script> 
 
             function openLink (android_url, android_store_url) {
-                location.href = android_url + getParam("store_id");
+                location.href = 'sggolf://query?typeCode=HIO_INVEN&id=buy';
                 setTimeout( function () {
-                    location.href = android_store_url;
+                    location.href = 'https://play.google.com/store/apps/details?id=com.sg.golf';
                 },2000);
             }
 
             function handleVisibilityChange() { 
                 if(document.hidden) { 
                     // the page is hidden 
-                    location.href = "sggolf://query?typeCode=HIO_INVEN";
                     window.open('','_self').close(); 
                     opener=self;
                     setTimeout('self.close()',1000);
@@ -28,7 +27,7 @@
         </script>
     </HEAD>
     
-    <BODY onLoad="openLink('sggolf://query?typeCode=HIO_INVEN', 'https://play.google.com/store/apps/details?id=com.sg.golf')">
+    <BODY onLoad="openLink()">
 
     
     </HTML>
