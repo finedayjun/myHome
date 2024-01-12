@@ -3,69 +3,58 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name=”viewport” content=”initial-scale = 2.0″>
-<style type="text/css">
- <!--
-  body {
-  	font-size:20pt;
-  	margin: 10px;
-  	}
- //-->
- </style>
-<title>Execute App at (Mobile)WebPage</title>
+
+<title>SG Golf</title>
+
+</head>
+
+<body>
+	<a href="#" onclick="javascript:executeApp()">앱 실행</a> <br>
+	<a href="#" onclick="javascript:goAppStoreOrPlayStore()">스토어 열기</a><br>
+</body>
+
 <script>
 
-var userAgent = navigator.userAgent;
-
+	var userAgent = navigator.userAgent;
 	
-var os = "";
-
-if (userAgent.indexOf("android") !== -1 || userAgent.indexOf("Android") !== -1) {
-        os = "android";
-    } else if (userAgent.indexOf("iPhone") !== -1 || userAgent.indexOf("iPad") !== -1 || userAgent.indexOf("Apple") !== -1) {
-        os = "iOS";
-    } else {
-        os = "etc";
-    }
-
-function goAppStoreOrPlayStore() {
-	var storeURL ="";
-	if (os == "iOS") {
-		storeURL = "https://apps.apple.com/kr/app/id1027273050";
-	} else if (os == "android") {
-		storeURL = "https://play.google.com/store/apps/details?id=com.sg.golf";
+		
+	var os = "";
+	
+	if (userAgent.indexOf("android") !== -1 || userAgent.indexOf("Android") !== -1) {
+	        os = "android";
+	    } else if (userAgent.indexOf("iPhone") !== -1 || userAgent.indexOf("iPad") !== -1 || userAgent.indexOf("Apple") !== -1) {
+	        os = "iOS";
+	    } else {
+	        os = "etc";
+	    }
+	
+	function goAppStoreOrPlayStore() {
+		var storeURL ="";
+		if (os == "iOS") {
+			storeURL = "https://apps.apple.com/kr/app/id1027273050";
+		} else if (os == "android") {
+			storeURL = "https://play.google.com/store/apps/details?id=com.sg.golf";
+		}
+	
+		location.replace(storeURL);
+	}
+	
+	function executeApp() {
+		var appUriScheme = "sggolf://query?typeCode=HIO_INVEN";
+		document.location.href = appUriScheme;
+	}
+	
+	function executeAppOrGoStore() {
+		var openAt = new Date;
+		 setTimeout(
+		 	function() {
+		 		if (new Date - openAt < 2000)
+		 			goAppStoreOrPlayStore();
+		 	}, 1000);
+		 executeApp();
 	}
 
-	location.replace(storeURL);
-}
-
-
-
-function executeApp() {
-	var appUriScheme = "sggolf://query?typeCode=HIO_INVEN";
-	document.location.href = appUriScheme;
-}
-
-function executeAppOrGoStore() {
-	var openAt = new Date;
-	 setTimeout(
-	 	function() {
-	 		if (new Date - openAt < 2000)
-	 			goAppStoreOrPlayStore();
-	 	}, 1000);
-	 executeApp();
-}
-
-	setTimeout(
-	 	executeAppOrGoStore(), 500);
-
+	executeApp()
 </script>
-</head>
-<center>
-<a href="#" onclick="javascript:goAppStoreOrPlayStore()">스토어 열기</a><br /><br />
-<a href="#" onclick="javascript:executeApp()">앱 실행</a> <br /><br />
-<a href="#" onclick="javascript:executeAppOrGoStore()">있으면 실행하고 없으면 스토어로 GO----</a>
-
-</center>
-<body>
-</body>
+	
 </html>
