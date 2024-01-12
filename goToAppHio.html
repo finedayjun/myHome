@@ -1,0 +1,25 @@
+<HTML>
+    <HEAD>
+        <TITLE> App Install Check!! </TITLE>
+        <script> function checkApplicationInstall() { 
+            document.checkframe.location = "sggolf://query?typeCode=HIO_INVE"; 
+            setTimeout("checkApplicationInstall_callback()", 500); 
+            } 
+            
+            function checkApplicationInstall_callback() { 
+                try { 
+                    var s = document.checkframe.document.body.innerHTML; 
+                } catch (e) { 
+                    alert('app not lnstall'); 
+                    document.checkframe.location = 'market://details?id=com.sg.golf'; 
+                } 
+            } 
+        </script>
+    </HEAD>
+    
+    <BODY onLoad="checkApplicationInstall()"> easy fax scheme call!</br> 
+        <iframe name="checkframe" width="0px"
+            height="0px">
+        </iframe> </BODY>
+    
+    </HTML>
