@@ -1,57 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name=”viewport” content=”initial-scale = 2.0″>
 
-    <script>
+<title>Sg Golf</title>
+<script>
 
-        var userAgent = navigator.userAgent.toLowerCase();
-        
-        var os = "";
-        
-        if (userAgent.indexOf("android") !== -1) {
-                os = "android";
-            } else if (userAgent.indexOf("iphone") !== -1 || userAgent.indexOf("ipad") !== -1 || userAgent.indexOf("apple") !== -1) {
-                os = "iOS";
-            } else {
-                os = "etc";
-            }
-        
-        function goAppStoreOrPlayStore() {
-            var storeURL = "https://sggolf.com/main";
+var userAgent = navigator.userAgent.toLowerCase();
 
-            if (os == "iOS") {
-                storeURL = "https://itunes.apple.com/kr/app/sggolpeu/id1027273050?mt=8";
-            } else if (os == "android") {
-                storeURL = "https://play.google.com/store/apps/details?id=com.sg.golf";
-            }
-        
-            location.replace(storeURL);
-        }
-  
-        function executeApp() {
-            var appUriScheme = "sggolf://query?typeCode=HIO_INVEN";
-            document.location.href = appUriScheme;
+var os = "";
 
-        }
-        
-        function executeAppOrGoStore() {
-            var openAt = new Date;
-            setTimeout(
-                function() {
-                    if (new Date - openAt < 1000)
-                        goAppStoreOrPlayStore();
-                }, 500);
-            executeApp();
-        }
+if (userAgent.indexOf("android") !== -1) {
+        os = "android";
+    } else if (userAgent.indexOf("iphone") !== -1 || userAgent.indexOf("ipad") !== -1 || userAgent.indexOf("apple") !== -1) {
+        os = "iOS";
+    } else {
+        os = "etc";
+    }
 
-        executeAppOrGoStore();
-        </script>
+function goAppStoreOrPlayStore() {
+	var storeURL ="";
+    
+	if (os == "iOS") {
+		storeURL = "https://itunes.apple.com/kr/app/sggolpeu/id1027273050?mt=8";
+	} else if (os == "android") {
+		storeURL = "https://play.google.com/store/apps/details?id=com.sg.golf";
+	}
 
-    <title>SG Golf</title>
+	location.replace(storeURL);
+}
+
+
+function executeApp() {
+	var appUriScheme = "sggolf://query?typeCode=HIO_INVEN";
+	document.location.href = appUriScheme;
+}
+
+function executeAppOrGoStore() {
+	var openAt = new Date;
+	 setTimeout(
+	 	function() {
+	 		if (new Date - openAt < 1000)
+	 			goAppStoreOrPlayStore();
+	 	}, 500);
+	 executeApp();
+}
+</script>
 </head>
-<body>
-sg
+
+
+<body onload="javascript:executeAppOrGoStore()">
+
 </body>
 </html>
