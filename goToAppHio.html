@@ -1,25 +1,34 @@
 <HTML>
     <HEAD>
         <TITLE> App Install Check!! </TITLE>
-        <script> function checkApplicationInstall() { 
-            document.checkframe.location = "sggolf://query?typeCode=HIO_INVEN"; 
-            setTimeout("checkApplicationInstall_callback()", 500); 
-            } 
-            
-            function checkApplicationInstall_callback() { 
-                try { 
-                    var s = document.checkframe.document.body.innerHTML; 
-                } catch (e) { 
-                    alert('app not lnstall'); 
-                    document.checkframe.location = 'market://details?id=com.sg.golf'; 
+        <script> 
+
+            function openLink (android_url, android_store_url) {
+                location.href = android_url + getParam("store_id");
+                setTimeout( function () {
+                    location.href = android_store_url;
+                },2000);
+            }
+
+            function handleVisibilityChange() { 
+                if(document.hidden) { 
+                    // the page is hidden 
+                    location.href = "sggolf://query?typeCode=HIO_INVEN";
+                    window.open('','_self').close(); 
+                    opener=self;
+                    setTimeout('self.close()',1000);
+                    self.close();
+                } else { 
+                    // the page is visible 
                 } 
             } 
+            
+            document.addEventListener("visibilitychange", handleVisibilityChange, false);
+
         </script>
     </HEAD>
     
-    <BODY onLoad="checkApplicationInstall()"> easy fax scheme call!</br> 
-        <iframe name="checkframe" width="0px"
-            height="0px">
-        </iframe> </BODY>
+    <BODY onLoad="openLink('sggolf://query?typeCode=HIO_INVEN', 'https://play.google.com/store/apps/details?id=com.sg.golf')">
+
     
     </HTML>
