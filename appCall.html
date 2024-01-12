@@ -30,7 +30,7 @@ if (userAgent.indexOf("android") !== -1 || userAgent.indexOf("Android") !== -1) 
 function goAppStoreOrPlayStore() {
 	var storeURL ="";
 	if (os == "iOS") {
-		storeURL = "https://apps.apple.com/kr/app/sg골프/id1027273050";
+		storeURL = "https://apps.apple.com/kr/app/id1027273050";
 	} else if (os == "android") {
 		storeURL = "https://play.google.com/store/apps/details?id=com.sg.golf";
 	}
@@ -54,6 +54,8 @@ function executeAppOrGoStore() {
 	 	}, 500);
 	 executeApp();
 }
+
+	executeAppOrGoStore();
 </script>
 </head>
 <center>
