@@ -1,33 +1,52 @@
-<HTML>
-    <HEAD>
-        <TITLE> App Install Check!! </TITLE>
-        <script> 
+<!DOCTYPE html>
+<html>
 
-            function openLink (android_url, android_store_url) {
-                location.href = 'sggolf://query?typeCode=HIO_INVEN&id=buy';
-                setTimeout( function () {
-                    location.href = 'https://play.google.com/store/apps/details?id=com.sg.golf';
-                },2000);
-            }
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="initial-scale=2.0">
 
-            function handleVisibilityChange() { 
-                if(document.hidden) { 
-                    // the page is hidden 
-                    window.open('','_self').close(); 
-                    opener=self;
-                    setTimeout('self.close()',1000);
-                    self.close();
-                } else { 
-                    // the page is visible 
-                } 
-            } 
+    <title>Sg Golf</title>
+    <script>
+        function openLink() {
+            // 사용자에게 확인을 받는 모달 창 추가 (선택사항)
+            var userConfirmation = confirm("앱으로 이동하시겠습니까?");
             
-            document.addEventListener("visibilitychange", handleVisibilityChange, false);
+            if (userConfirmation) {
+                
+                // 페이지 이동
+                location.href = "sggolf://query?typeCode=HIO_INVEN&id=buy";
 
-        </script>
-    </HEAD>
-    
-    <BODY onLoad="openLink()">
+                // 일정 시간 후에 Google Play 스토어로 이동
+                setTimeout(function () {
+                    location.href = "https://play.google.com/store/apps/details?id=com.sg.golf";
+                }, 2000);
+            } else {
+                // 사용자가 취소한 경우의 동작 추가 (선택사항)
+                alert("앱 이동이 취소되었습니다.");
+            }
+        }
 
-    
-    </HTML>
+        function handleVisibilityChange() {
+            if (document.hidden) {
+                // 페이지가 숨겨졌을 때의 동작
+                location.href = "kakaotalk://inappbrowser/close";
+                window.open('', '_self').close();
+            } else {
+                // 페이지가 나타났을 때의 동작
+                // 추가적인 동작이 필요한 경우 여기에 코드 추가
+            }
+        }
+
+
+        document.addEventListener("visibilitychange", handleVisibilityChange, false);
+
+        // 페이지 로드 시 자동으로 링크 열기
+        openLink();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
