@@ -29,7 +29,6 @@
         function handleVisibilityChange() {
             if (document.hidden) {
                 // 페이지가 숨겨졌을 때의 동작
-                location.href = "kakaotalk://inappbrowser/close";
                 window.open('', '_self').close();
             } else {
                 // 페이지가 나타났을 때의 동작
