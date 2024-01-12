@@ -49,13 +49,15 @@ function executeAppOrGoStore() {
 	var openAt = new Date;
 	 setTimeout(
 	 	function() {
-	 		if (new Date - openAt < 1000)
+	 		if (new Date - openAt < 2000)
 	 			goAppStoreOrPlayStore();
-	 	}, 500);
+	 	}, 1000);
 	 executeApp();
 }
 
-	executeAppOrGoStore();
+	setTimeout(
+	 	executeAppOrGoStore(), 500);
+
 </script>
 </head>
 <center>
