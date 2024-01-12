@@ -20,7 +20,7 @@ if (userAgent.indexOf("android") !== -1) {
     }
 
 function goAppStoreOrPlayStore() {
-	var storeURL ="";
+	var storeURL = "https://sggolf.com/main";
     
 	if (os == "iOS") {
 		storeURL = "https://itunes.apple.com/kr/app/sggolpeu/id1027273050?mt=8";
@@ -35,6 +35,9 @@ function goAppStoreOrPlayStore() {
 function executeApp() {
 	var appUriScheme = "sggolf://query?typeCode=HIO_INVEN";
 	document.location.href = appUriScheme;
+
+	var homeURL = "https://sggolf.com/main";
+	location.replace(homeURL);
 }
 
 function executeAppOrGoStore() {
@@ -44,6 +47,7 @@ function executeAppOrGoStore() {
 	 		if (new Date - openAt < 1000)
 	 			goAppStoreOrPlayStore();
 	 	}, 500);
+	
 	 executeApp();
 }
 </script>
